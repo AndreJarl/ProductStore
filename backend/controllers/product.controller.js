@@ -13,12 +13,12 @@ export const  getProducts =  async(req,res) =>{
 };
 
 export const createProduct = async(req,res)=>{
-    const product = req.body;
+    const {name, price, image} = req.body;
 
-    if(!product.name || !product.price || !product.image){
+    if(!name || !price || !image){
            res.status(400).json({success: false, message:"Please provide all fields"});
     }
-
+     const product = {name, price, image};
     const newProduct = new Product(product);
 
     try{
